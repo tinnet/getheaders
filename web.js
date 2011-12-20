@@ -12,7 +12,7 @@ app.get('/', function(request, response) {
         response.write(header + ": " + request.headers[header]);
         response.write("<br/>");
     }
-    response.write("</body><!-- test--<!-- test-->></html>");
+    response.write("</body></html>");
     response.end();
 });
 
