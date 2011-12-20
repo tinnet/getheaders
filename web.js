@@ -5,8 +5,8 @@ var app = express.createServer(express.logger());
 var HEADER_BLACKLIST = ['x-heroku-dynos-in-use'] 
 
 app.get('/', function(request, response) {
-    var html = "<html><head><title></title></head><body>";
     response.contentType('html');
+    response.write("<html><head><title></title></head><body>");
     for (var header in request.headers) {
         if (header in HEADER_BLACKLIST) { continue; }
         response.write(header + ": " + request.headers[header]);
