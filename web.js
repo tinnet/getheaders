@@ -2,7 +2,7 @@ var express = require('express');
 
 var app = express.createServer(express.logger());
 
-var HEADER_BLACKLIST = ['x-heroku-dynos-in-use'] 
+var HEADER_BLACKLIST = ['x-heroku-dynos-in-use', 'x-heroku-queue-wait-time'] 
 
 app.get('/', function(request, response) {
     response.contentType('html');
