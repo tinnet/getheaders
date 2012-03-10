@@ -1,7 +1,7 @@
 {
-    "name": "myheaders",
+    "name": "getheaders",
     "version": "0.0.1",
     "dependencies": {
-        "express": "2.5.2"
+        "express": "2.5.4"
     }
 }

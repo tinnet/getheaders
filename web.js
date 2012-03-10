@@ -2,17 +2,17 @@ var express = require('express');
 
 var app = express.createServer(express.logger());
 
-var HEADER_BLACKLIST = ['x-heroku-dynos-in-use', 'x-heroku-queue-wait-time'] 
+var HEADER_BLACKLIST = ['x-heroku-dynos-in-use', 'x-heroku-queue-wait-time']; 
 
 app.get('/', function(request, response) {
     response.contentType('html');
-    response.write("<html><head><title></title></head><body>");
+    response.write('<html><head><title></title></head><body>');
     for (var header in request.headers) {
         if (header in HEADER_BLACKLIST) { continue; }
-        response.write(header + ": " + request.headers[header]);
-        response.write("<br/>");
+        response.write(header + ': ' + request.headers[header]);
+        response.write('<br/>');
     }
-    response.write("</body></html>");
+    response.write('</body></html>');
     response.end();
 });
 
