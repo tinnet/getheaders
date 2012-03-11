@@ -1,0 +1,5 @@
+<headers>
+{% for header,value in headers|dictsort %}
+<{{ header }}>{{ value }}</{{ header }}>
+{% endfor %}
+</headers>
