@@ -4,7 +4,8 @@ Small app to return http request headers in format determined by Accept: header
 
 WHY
 ===
-* to try out node.js ad heroku
+* ~~to try out node.js and heroku~~
+	* python and heroku it is (nodejs in branch) ;P
 
 * because i am sick of googling for an website to show me my ip/user-agent ;)
 
@@ -12,7 +13,12 @@ WHY
 
 TODO
 ====
-* filter heroku headers (secret!)
+* add some nonstandard magic headers like:
+	* remote_addr (make sure heroku does not mess with remote it via x-forward)
+	* geolocation
+	* reverse hostname
+
+* filter heroku headers (secret?!)
 
 * improve html view
 
