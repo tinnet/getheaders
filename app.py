@@ -46,9 +46,9 @@ def default(extension):
         return resp
 
     if extension == 'xml':
-       resp = make_response(render_template('default.xml', headers=getHeaders(request)))
-       resp.mimetype = 'application/xml'
-       return resp
+        resp = make_response(render_template('default.xml', headers=getHeaders(request)))
+        resp.mimetype = 'application/xml'
+        return resp
 
     if extension == 'json':
         return jsonify(getHeaders(request))
