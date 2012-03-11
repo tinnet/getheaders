@@ -8,10 +8,12 @@ from flask import request
 
 app = Flask(__name__)
 
-KNOWN_MIMES = ['text/html', 'application/xhtml+xml', 'application/json', 'application/xml']
+KNOWN_MIMES = ('text/html', 'application/xhtml+xml', 'application/json', 'application/xml')
 
 def getHeaders(req):
     result = dict()
+
+    # clone flasks "dict like object" to be safe
     for key, value in req.headers.iteritems():
         result[key] = value
 
@@ -35,7 +37,7 @@ def detect_extension(req):
     return "UNABLE TO DETECT EXTENSION"
 
 @app.route('/', defaults={'extension': 'auto'})
-@app.route('/extension.<extension>')
+@app.route('/default.<extension>')
 def default(extension):
     if extension == 'auto':
         extension = detect_extension(request)
