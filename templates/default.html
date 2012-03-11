@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+<title>getheaders!</title>
+</head>
+<body>
+{% for header,value in headers|dictsort %}
+<div class="header">
+  <span class="headerName">{{ header }}</span>:&nbsp;<span class="headerValue">{{ value }}</span>
+</div>
+{% endfor %}
+</body>
+</html>
