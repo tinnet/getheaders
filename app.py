@@ -17,7 +17,7 @@ def getHeaders(req):
 
     result['remote_addr'] = req.remote_addr
     result['xhr'] = req.is_xhr
-    
+
     return result
 
 def detect_extension(req):
