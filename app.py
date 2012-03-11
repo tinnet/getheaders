@@ -35,7 +35,7 @@ def detect_extension(req):
     return "UNABLE TO DETECT EXTENSION"
 
 @app.route('/', defaults={'extension': 'auto'})
-@app.route('/extension.<extension>')
+@app.route('/default.<extension>')
 def default(extension):
     if extension == 'auto':
         extension = detect_extension(request)
