@@ -2,9 +2,9 @@ import os
 
 from flask import Flask
 from flask import jsonify
-from flask import request
-from flask import render_template
 from flask import make_response
+from flask import render_template
+from flask import request
 
 app = Flask(__name__)
 
