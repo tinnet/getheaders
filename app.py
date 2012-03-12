@@ -1,4 +1,5 @@
 import os
+import socket
 
 from flask import Flask
 from flask import jsonify
@@ -9,18 +10,24 @@ from flask import request
 app = Flask(__name__)
 
 KNOWN_MIMES = ('text/html', 'application/xhtml+xml', 'application/json', 'application/xml')
+HEADER_BLACKLIST = ('Cookie', 'X-Heroku-Dynos-In-Use', 'X-Heroku-Queue-Depth', 'X-Heroku-Queue-Wait-Time', 'X-Request-Start', 'X-Varnish')
 
 def getHeaders(req):
     result = dict()
 
     # clone flasks "dict like object" to be safe
     for key, value in req.headers.iteritems():
+        if key in HEADER_BLACKLIST:
+            continue
+
         result[key] = value
 
-    result['remote_addr'] = req.remote_addr
-    result['xhr'] = req.is_xhr
+    result['X-Remote-Addr'] = req.remote_addr
+    result['X-Remote-Host'],_,_ = socket.gethostbyaddr(req.remote_addr)
+    result['X-Xhr'] = req.is_xhr
 
     return result
+
 
 def detect_extension(req):
     best = req.accept_mimetypes.best_match(KNOWN_MIMES)
@@ -35,6 +42,7 @@ def detect_extension(req):
         return 'json'
 
     return "UNABLE TO DETECT EXTENSION"
+
 
 @app.route('/', defaults={'extension': 'auto'})
 @app.route('/default.<extension>')
