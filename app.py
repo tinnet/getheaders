@@ -6,6 +6,7 @@ from flask import jsonify
 from flask import make_response
 from flask import render_template
 from flask import request
+from flask import send_from_directory
 
 app = Flask(__name__)
 
@@ -64,6 +65,10 @@ def default(extension):
         return jsonify(getHeaders(request))
 
     return "UNKNOWN EXTENSION: " + extension
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
