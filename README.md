@@ -47,11 +47,11 @@ Small app to return http request headers in format determined by Accept: header
 # TODO
 
 * add some nonstandard magic headers like:
-	* remote_addr (make sure heroku does not mess with remote it via x-forward)
+	* ~~remote_addr (make sure heroku does not mess with remote it via x-forward)~~
 	* geolocation?
-	* reverse hostname?
+	* ~~reverse hostname?~~
 
-* filter heroku headers (secret?!)
+* ~~filter heroku headers (secret?!)~~
 
 * improve html view
 
@@ -59,8 +59,8 @@ Small app to return http request headers in format determined by Accept: header
 
   * add style
 
-* add json view
+* ~~add json view~~
 
 * add txt view
 
-* add xml view
+* ~~add xml view~~
