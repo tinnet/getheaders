@@ -8,6 +8,8 @@ from flask import render_template
 from flask import request
 from flask import send_from_directory
 
+from stathatasync import StatHat
+
 app = Flask(__name__)
 
 KNOWN_MIMES = ('text/html', 'application/xhtml+xml', 'application/json', 'application/xml')
@@ -48,6 +50,7 @@ def detect_extension(req):
 @app.route('/', defaults={'extension': 'auto'})
 @app.route('/default.<extension>')
 def default(extension):
+    sendStats()
     if extension == 'auto':
         extension = detect_extension(request)
 
@@ -69,6 +72,11 @@ def default(extension):
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
+
+def sendStats():
+    stats = StatHat('oTOTIGkr5SxthPjy')
+    stats.count('requests', 1)
+    stats.value('load avg', os.getloadavg()[0])
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
