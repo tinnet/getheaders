@@ -73,6 +73,10 @@ def default(extension):
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
+@app.route('/mu-f4cef731-9cad8885-3d770e39-b8663c18')
+def blitzio():
+    return "42"
+
 def sendStats():
     stats = StatHat('oTOTIGkr5SxthPjy')
     stats.count('requests', 1)
