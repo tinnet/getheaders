@@ -61,6 +61,6 @@ Small app to return http request headers in format determined by Accept: header
 
 * ~~add json view~~
 
-* add txt view
+* ~~add txt view~~
 
 * ~~add xml view~~

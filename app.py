@@ -63,6 +63,11 @@ def default(extension):
         resp.mimetype = 'application/xml'
         return resp
 
+    if extension == 'txt':
+        resp = make_response(render_template('default.txt', headers=getHeaders(request)))
+        resp.mimetype = 'text/plain'
+        return resp
+
     if extension == 'json':
         return jsonify(getHeaders(request))
 
