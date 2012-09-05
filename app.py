@@ -50,7 +50,7 @@ def detect_extension(req):
 @app.route('/', defaults={'extension': 'auto'})
 @app.route('/default.<extension>')
 def default(extension):
-    sendStats()
+#    sendStats()
     if extension == 'auto':
         extension = detect_extension(request)
 
