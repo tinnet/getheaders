@@ -50,7 +50,6 @@ def detect_extension(req):
 @app.route('/', defaults={'extension': 'auto'})
 @app.route('/default.<extension>')
 def default(extension):
-#    sendStats()
     if extension == 'auto':
         extension = detect_extension(request)
 
@@ -76,11 +75,6 @@ def favicon():
 @app.route('/mu-f4cef731-9cad8885-3d770e39-b8663c18')
 def blitzio():
     return "42"
-
-def sendStats():
-    stats = StatHat('oTOTIGkr5SxthPjy')
-    stats.count('requests', 1)
-    stats.value('load avg', os.getloadavg()[0])
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
