@@ -49,7 +49,7 @@ Small app to return http request headers in format determined by Accept: header
     remote_addr: 127.0.0.1
     Content-Type:
     Host: localhost:5000
-    Accept: application/json
+    Accept: text/plain
     User-Agent: curl/7.21.4 (universal-apple-darwin11.0) libcurl/7.21.4 OpenSSL/0.9.8r zlib/1.2.5
 
 ## GET PLAINTEXT (via file extension)
