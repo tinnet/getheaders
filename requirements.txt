@@ -10,5 +10,3 @@ oauthlib==0.3.0
 pyasn1==0.1.4
 requests==0.14.0
 rsa==3.1.1
-stathat==0.0.2
-stathat-async==0.0.3

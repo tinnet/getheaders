@@ -4,9 +4,6 @@ Small app to return http request headers in format determined by Accept: header
 
 # WHY
 
-* ~~to try out node.js and heroku~~
-	* python and heroku it is (nodejs in branch) ;P
-
 * because i am sick of googling for an website to show me my ip/user-agent ;)
 
 * because the world needs a service that has a plain text response that we can grep/awk/sed in bash scripts
@@ -43,6 +40,20 @@ Small app to return http request headers in format determined by Accept: header
 
 ## GET JSON (via file extension)
     curl http://localhost:5000/default.json
+
+## GET PLAINTEXT (via content type)
+
+    curl -H Accept:text/plain http://localhost:5000
+    xhr: false
+    Content-Length:
+    remote_addr: 127.0.0.1
+    Content-Type:
+    Host: localhost:5000
+    Accept: application/json
+    User-Agent: curl/7.21.4 (universal-apple-darwin11.0) libcurl/7.21.4 OpenSSL/0.9.8r zlib/1.2.5
+
+## GET PLAINTEXT (via file extension)
+    curl http://localhost:5000/default.txt
 
 # TODO
 

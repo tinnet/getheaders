@@ -8,11 +8,9 @@ from flask import render_template
 from flask import request
 from flask import send_from_directory
 
-from stathatasync import StatHat
-
 app = Flask(__name__)
 
-KNOWN_MIMES = ('text/html', 'application/xhtml+xml', 'application/json', 'application/xml')
+KNOWN_MIMES = {'text/html': 'html', 'application/xhtml+xml': 'html', 'application/json': 'json', 'application/xml': 'xml', 'text/plain': 'txt'}
 HEADER_BLACKLIST = ('Cookie', 'X-Heroku-Dynos-In-Use', 'X-Heroku-Queue-Depth', 'X-Heroku-Queue-Wait-Time', 'X-Request-Start', 'X-Varnish')
 
 def getHeaders(req):
@@ -22,7 +20,6 @@ def getHeaders(req):
     for key, value in req.headers.iteritems():
         if key in HEADER_BLACKLIST:
             continue
-
         result[key] = value
 
     result['X-Remote-Addr'] = req.remote_addr
@@ -35,14 +32,8 @@ def getHeaders(req):
 def detect_extension(req):
     best = req.accept_mimetypes.best_match(KNOWN_MIMES)
 
-    if best == 'text/html' or best == 'application/xhtml+xml':
-        return 'html'
-
-    if best == 'application/xml':
-        return 'xml'
-
-    if best == 'application/json':
-        return 'json'
+    if best in KNOWN_MIMES:
+        return KNOWN_MIMES[best]
 
     return "UNABLE TO DETECT EXTENSION"
 
