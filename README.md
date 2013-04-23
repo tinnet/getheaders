@@ -1,3 +1,9 @@
+# DEPRECATED 
+
+http://httpbin.org/ is just so much better (well aside from only returning json ;P)
+
+---
+
 # WHAT
 
 Small app to return http request headers in format determined by Accept: header
